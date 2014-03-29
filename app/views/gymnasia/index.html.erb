@@ -1,0 +1,39 @@
+<h1>Listing gymnasia</h1>
+
+<table>
+  <thead align = "left">
+    <tr>
+      <th>Logo url</th>
+      <th>Description</th>
+      <th>Phone overall</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gymnasia.each do |gymnasium| %>
+      <tr class = "<%= cycle('list_line_odd', 'list_line_even') %>">
+        <td>
+          <%= image_tag(gymnasium.logo_url, class: 'list_image') %>
+        </td>
+        <td class = "list_description">
+          <dl>
+            <dt><%= gymnasium.title %></dt>
+            <!--/strip_tags - убирает из описания html теги-->
+            <dd><%= truncate(strip_tags(gymnasium.description), length: 400) %></dd>
+          </dl>
+        </td>
+        <td><%= gymnasium.phone_overall %></td>
+        <td>
+          <%= link_to 'Show', gymnasium %><br/>
+          <%= link_to 'Edit', edit_gymnasium_path(gymnasium) %><br/>
+          <%= link_to 'Destroy', gymnasium, method: :delete, data: {    confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gymnasium', new_gymnasium_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @gymnasium.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @gymnasium.description %>
+</p>
+
+<p>
+  <strong>Logo url:</strong>
+  <%= @gymnasium.logo_url %>
+</p>
+
+<p>
+  <strong>Phone overall:</strong>
+  <%= @gymnasium.phone_overall %>
+</p>
+
+<%= link_to 'Edit', edit_gymnasium_path(@gymnasium) %> |
+<%= link_to 'Back', gymnasia_path %>
