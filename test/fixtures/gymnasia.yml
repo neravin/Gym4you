@@ -11,3 +11,10 @@ two:
   description: MyText
   logo_url: MyString
   phone_overall: MyString
+
+viking_gym:
+  title: Viking Fitness
+  description: 
+      Viking fitness for true northern peoples
+  logo_url: mad_viking_logo.png
+  phone_overall: "no phone"

@@ -3,6 +3,11 @@ require 'test_helper'
 class GymnasiaControllerTest < ActionController::TestCase
   setup do
     @gymnasium = gymnasia(:one)
+      @update = {
+        title: 'Test fitness',
+        description: 'Test description',
+        logo_url: 'gym_logo.png'
+      }
   end
 
   test "should get index" do
@@ -18,7 +23,7 @@ class GymnasiaControllerTest < ActionController::TestCase
 
   test "should create gymnasium" do
     assert_difference('Gymnasium.count') do
-      post :create, gymnasium: { description: @gymnasium.description, logo_url: @gymnasium.logo_url, phone_overall: @gymnasium.phone_overall, title: @gymnasium.title }
+      post :create, gymnasium: @update
     end
 
     assert_redirected_to gymnasium_path(assigns(:gymnasium))
@@ -35,7 +40,7 @@ class GymnasiaControllerTest < ActionController::TestCase
   end
 
   test "should update gymnasium" do
-    patch :update, id: @gymnasium, gymnasium: { description: @gymnasium.description, logo_url: @gymnasium.logo_url, phone_overall: @gymnasium.phone_overall, title: @gymnasium.title }
+    patch :update, id: @gymnasium, gymnasium: @update
     assert_redirected_to gymnasium_path(assigns(:gymnasium))
   end
 
