@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140328232735) do
+ActiveRecord::Schema.define(version: 20140331200238) do
+
+  create_table "affiliates", force: true do |t|
+    t.string   "address"
+    t.decimal  "price",        precision: 8, scale: 2
+    t.string   "phone"
+    t.integer  "gymnasium_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.float    "latitude"
+    t.float    "longitude"
+  end
+
+  add_index "affiliates", ["gymnasium_id"], name: "index_affiliates_on_gymnasium_id"
 
   create_table "gymnasia", force: true do |t|
     t.string   "title"

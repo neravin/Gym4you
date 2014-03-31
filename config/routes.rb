@@ -1,4 +1,7 @@
 GeoFitness::Application.routes.draw do
+  get "map/index"
+  resources :affiliates
+
   resources :gymnasia
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -6,6 +9,7 @@ GeoFitness::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  root to: 'map#index', as: 'map'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

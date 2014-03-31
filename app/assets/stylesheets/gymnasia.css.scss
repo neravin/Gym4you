@@ -2,7 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 // id scheme #2M61QUbhFz4nd
-.gymnasia{
+
+@import "palette";
+
+
+.gymnasia, .affiliates{
 	
 	h1{
 		color: #00372d;
@@ -16,7 +20,7 @@
 		color: white;
 		th{
 			padding: 5px;
-			background: #00372d;
+			background: $dark-green;
 		}
 		
 		
@@ -24,7 +28,7 @@
 
 	table tr td {
 		padding: 5px;
-		border-bottom: 1px solid #00372d;
+		border-bottom: 1px solid lighten(black, 85%);
 	}
 
 	table tr th, table tr td {

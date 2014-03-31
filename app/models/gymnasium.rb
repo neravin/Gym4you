@@ -1,4 +1,5 @@
 class Gymnasium < ActiveRecord::Base
+	has_many :affiliates
 	validates :title, presence: true
 	validates :title, uniqueness: true
 	validates :logo_url, allow_blank: true, format: {
