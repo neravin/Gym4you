@@ -1,0 +1,164 @@
+<div id = "container2">
+	<div id = "container1">
+		<div class = "col-half1" id = "col1_settings">
+			<div id = "map" style="width: 880px; height:500px">
+			</div><!--/#map-->
+			<div style="width: 0.3em; height: 0.3em;">
+			</div>
+		</div><!--/.half-part-->
+
+		<div class = "col-half2" id = "style-6">
+			<!--p class="description">
+				Gym 4 you - сервис, призванный помочь вам найти фитнес зал в большом городе. Просто введите свой адрес, цену и расстояние, в пределах которого вы хотите, чтобы зал находился.
+			</p-->
+
+			<div class="begin">
+			<%= form_tag("/", method: "get") do %>
+			  <%= label_tag(:my_address, "Address:") %><br>
+			  <%= text_field_tag(:my_address, @address) %><br>
+			  
+			  <%= label_tag(:radius, "Radius(km):") %><br>
+			  <%= text_field_tag(:radius, @radius) %><br>
+
+			  <%= label_tag(:price, "Price:") %><br>
+			  <% if (@price_option == 0) %>
+			  	<%= radio_button_tag('price_option', 0, :checked => true )%>
+			  <% else %>
+			  	<%= radio_button_tag('price_option', 0 )%>
+			  <% end %>
+			  <%= label_tag('single_visit', "разовое посещение") %><br>
+			  
+			  <% if (@price_option == 1) %>
+			  	<%= radio_button_tag('price_option', 1, :checked => true ) %>
+			  <% else %>
+			  	<%= radio_button_tag('price_option', 1 ) %>
+			  <% end %>
+			  <%= label_tag('month', "месяц") %><br>
+			  
+			  <% if (@price_option == 6) %>
+			  	<%= radio_button_tag('price_option', 6, :checked => true ) %>
+			  <% else %>
+			  	<%= radio_button_tag('price_option', 6 ) %>
+			  <% end %>
+			  <%= label_tag('month_6', "6 месяцев") %><br>
+			  
+			  <% if (@price_option == 12) %>
+			  	<%= radio_button_tag('price_option', 12, :checked => true ) %>
+			  <% else %>
+			  	<%= radio_button_tag('price_option', 12 ) %>
+			  <% end %>
+			  <%= label_tag('year', "год") %><br>
+			  
+			  <%= text_field_tag(:first_price, @first_price, class: "input_price") %> 
+			   — 
+			  <%= text_field_tag(:last_price, @last_price, class: "input_price") %> 
+			  <%= label_tag('rub', ' руб') %><br>
+
+			  <%= label_tag('service', 'Service:') %><br>
+			  <%= check_box_tag 'service', 0 %><%= label_tag('waterpool', ' бассейн') %><br>
+			  <%= check_box_tag 'service', 1 %><%= label_tag('game_room', ' игровой зал') %>
+
+			  <button  class="plus white-middle-green" >
+				  			+
+				</button><br />
+
+			  <%= submit_tag("Search", id: "findButto", class: "button middle_green") %>
+			  <!--input type = "button" id = "findButton" class="button middle_green" value="Find My Place" /-->
+			<% end %>
+			<p id="my_latitude"></p>
+			<p id="my_longitude"></p>
+
+			
+			</div><!--/.begin-->
+		</div><!--/.half-part-->
+	</div><!--/#container1-->
+</div><!--/#container2-->
+<% if(@address && (@radius > 0) && (@first_price < @last_price)) %>
+	<%= javascript_tag do %>
+	  window.affilates_json = '<%= raw @affilates.to_json(:include => { :gymnasium => { :only => :title } }) %>';
+	<% end %>
+
+	<div id="result">
+	<!--h1>Результат: </h1-->
+	<table id = "result_table">
+		<tbody>
+			<% for location in @affilates %>
+				<% latlng_buf = [location.latitude, location.longitude] %>
+				<tr class = "<%= cycle('list_line_odd', 'list_line_even') %>", style = "border-bottom: none;">
+
+					<td><%= image_tag(location.gymnasium.logo_url, class: 'list_image') %></td>
+				  <td class = "list_description">
+				  	<dl>
+				  		<dt><%= location.gymnasium.title %></dt>
+				  		<dd><%= location.address %></dd>
+				 		</dl>
+
+				 		<p class="service_index">
+				 			<% location.services.each do |service| %>
+				 				- <%= service.title %><br>
+				 			<% end %>
+				 		</p>
+
+				 		<!--prices and terms-->
+				 		<table class="subtable">
+				 			<thead>
+				 				<tr>
+				 					<td>Цена</td>
+				 					<td>Условие</td>
+				 				</tr>
+				 			</thead>
+
+				 			<tbody>
+				 				<% location.prices.each do |price| %>
+						 			<tr>
+						 				<td>
+						 					<%= number_to_currency(price.price, 
+							          :unit => " руб", 
+							          :format => "%n%u", 
+							          :precision => 0) %>
+								    </td>
+						 				<td><%= price.terms %></td>
+						 			</tr>
+						 		<% end %>
+				 			</tbody>
+				 		</table>
+				  </td>
+
+				  <!--td class = "list_description">
+				  	<dl>
+					  	<dt><br></dt>
+					  	<dd--><!--Geocoder::Calculations.distance_between(@my_location, latlng_buf).round(2) --> </dd>
+				  	<!--/dl>
+				  </td-->
+
+				  <td align = "center">
+				  	<dl>
+					  	<dt><br></dt>
+					  	<!--dd></dd-->
+					  	<dd><p class = "colour<%= location.gymnasium_id %>"></p></dd>
+				  	</dl>
+				  </td>
+
+
+			  </tr>
+			  <tr>
+			  	<td></td>
+			  	<td>
+				  	<span class="link" style = "margin-top: 30px; display: block;">
+				 			<%= location.gymnasium.site %>
+				 		</span>
+			 		</td>
+			  	<td>
+				  	<button id = "route", class="button white-middle-green" 
+				  		onclick="route_r('<%=location.city %>', '<%= location.address %>', '<%= @address %>')">
+				  			route
+				  	</button>
+				  </td>
+			  </tr>
+			<% end %>
+		</tbody>
+	</table>
+	</div><!--/#result-->
+<% end %>
+<!--floating map-->
+<%= javascript_include_tag "floating_map.js", "data-turbolinks-track" => true %> 

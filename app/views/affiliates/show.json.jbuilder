@@ -1,0 +1,1 @@
+json.extract! @affiliate, :id, :name, :city, :address, :phone, :latitude, :longitude, :gymnasium_id, :created_at, :updated_at

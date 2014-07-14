@@ -69,6 +69,6 @@ class GymnasiaController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gymnasium_params
-      params.require(:gymnasium).permit(:title, :description, :logo_url, :phone_overall)
+      params.require(:gymnasium).permit(:title, :description, :logo_url, :phone_overall, :site)
     end
 end

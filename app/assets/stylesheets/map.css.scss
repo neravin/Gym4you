@@ -1,0 +1,51 @@
+// Place all the styles related to the Map controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "palette";
+@import "function";
+
+p.description{
+	font-size: 1.125em;
+	color: $dark-blue;
+}
+
+#result{
+	clear: both;
+	float: left;
+	margin-top: em(20);
+	margin-right: em(10);
+	width: 100%;
+}
+
+/*.floating-map {
+  position: fixed !important;
+  top: em(15) !important;
+  z-index: 101 !important;
+}*/
+
+#result_table {
+	width: 98%;
+}
+
+.input_price {
+	width: em(50);
+}
+
+#style-6{
+	width: 20%;
+}
+
+#col1_settings{
+	width: 80%;
+}
+
+.begin{
+	width: 100%;
+	float: right;
+}
+
+.service_index{
+	color: $dark-blue;
+	font-size: 0.9em;
+}
+

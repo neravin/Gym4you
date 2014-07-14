@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Title:</strong>
@@ -11,13 +10,18 @@
 </p>
 
 <p>
-  <strong>Logo url:</strong>
-  <%= @gymnasium.logo_url %>
+  <strong>Logo url:</strong><br />
+  <%= image_tag(@gymnasium.logo_url, class: 'list_image') %>
 </p>
 
 <p>
   <strong>Phone overall:</strong>
   <%= @gymnasium.phone_overall %>
+</p>
+
+<p>
+  <strong>Site:</strong>
+  <%= @gymnasium.site %>
 </p>
 
 <%= link_to 'Edit', edit_gymnasium_path(@gymnasium) %> |

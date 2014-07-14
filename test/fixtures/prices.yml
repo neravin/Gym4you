@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number_months: 9.99
+  price: 9.99
+  terms: MyText
+
+two:
+  number_months: 9.99
+  price: 9.99
+  terms: MyText

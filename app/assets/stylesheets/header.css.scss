@@ -1,0 +1,50 @@
+@import "palette";
+@import "function";
+
+header{
+	//background: $dark-blue;
+	//padding: 10px;
+	//position: relative;
+	
+}
+
+.container{
+	position: relative;
+	height: em(60);
+}
+
+#logo{
+	display: block;
+	//margin-top: 20px;
+  font-family: 'seasideresortnfregular';
+  font-family: 'roseregular';
+  font-family: 'Alegreya';
+  font-style: italic;
+  text-transform: lowercase;
+	font-variant: small-caps;
+  font-size: em(50);
+  font-weight: 700;
+  line-height: 1.2;
+  float: left;
+  color: white;
+  background: $light-green;
+  //background: rgb(214, 245, 242);
+  padding-right: 30px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: absolute;
+  left: 0;
+  top: -10px;
+}
+
+#logo:before{
+	content: "";
+	display: block;
+	width: 300%;
+	height:  60px;
+	background: $light-green;
+	//background: rgb(214, 245, 242);
+	position: absolute;
+	top: 0px;
+	left: -300%;
+}

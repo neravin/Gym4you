@@ -6,21 +6,24 @@
 @import "palette";
 
 
-.gymnasia, .affiliates{
-	
-	h1{
-		color: #00372d;
-	}
+.gymnasia, .affiliates, body{
+
 
 	table {
 		border-collapse: collapse;
 	}
 
+	tr{
+
+	}
+
 	thead{
 		color: white;
+		//color: $middle-green;
 		th{
 			padding: 5px;
-			background: $dark-green;
+			background: $middle-green;
+			color: white;
 		}
 		
 		
@@ -28,30 +31,41 @@
 
 	table tr td {
 		padding: 5px;
-		border-bottom: 1px solid lighten(black, 85%);
+
 	}
+
+
 
 	table tr th, table tr td {
 		vertical-align: top;
 	}
 
+	table tr{
+		border-bottom: 1px solid lighten(black, 85%);
+		&:last-child{
+			border-bottom: none;
+		}
+	}
+	table thead tr td{
+		border-bottom: 1px solid lighten(black, 85%);
+	}
 
 
 
 	.list_image{
 		width: 60px;
-		height: 70px;
 	}
 
 	.list_description{
-		width: 60%;
+		/*width: 60%;*/
 
 		dl{
 			margin: 0;
+			margin-bottom: 10px;
 		}
 
 		dt{
-			color: #244;
+			color: $dark-blue;
 			font-weight: bold;
 			font-size: larger;
 		}
@@ -68,4 +82,23 @@
 	.list_line_odd{
 		//background: #d1dde4;
 	}
+
+	.subtable{
+		font-size: 0.9em;
+		margin-top: 10px;
+		tr{
+			margin-bottom: 0px;
+		}
+	}
+}
+
+.rubber_col1 {
+ float: left; width: 400px
+}
+.rubber_col2 {  
+    margin: 0 100px 0 200px; /* Отступ справа и слева */
+}
+.rubber_col3 { 
+	width: 200px; 
+	float: right; 
 }

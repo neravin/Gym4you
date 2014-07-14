@@ -1,0 +1,72 @@
+
+
+<p>
+	<strong>Name:</strong>
+	<%= @affiliate.name %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @affiliate.city %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @affiliate.address %>
+</p>
+
+<p>
+  <strong>Prices:</strong>
+</p>
+<table>
+  <thead>
+    <th>Number of month</th>
+    <th>Price</th>
+    <th>Terms</th>
+  </thead>
+
+  <tbody>
+    <% @affiliate.prices.each do |price| %>
+      <tr>
+        <td><%= price.number_months %></td>
+        <td>
+          <%= number_to_currency(price.price, 
+            :unit => "руб", 
+            :format => "%n%u", 
+            :precision => 0) %>
+        </td>
+        <td><%= price.terms %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+  <strong>Services:</strong><br/>
+  <% @affiliate.services.each do |gym_service| %>
+    <%= gym_service.title %><br/>
+  <% end %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @affiliate.phone %>
+</p>
+
+<p>
+  <strong>Gymnasium:</strong>
+  <%= @affiliate.gymnasium.title %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @affiliate.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @affiliate.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_affiliate_path(@affiliate) %> |
+<%= link_to 'Back', affiliates_path %>

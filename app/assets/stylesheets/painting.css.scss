@@ -1,0 +1,87 @@
+@import "palette";
+
+header{
+	//background: white;
+}
+
+.middle_green{
+	//background: linear-gradient(to top, $middle-green, $light-green);
+	background: $middle-green;
+	color: white;
+	border: 1px solid rgba(0, 0, 0, 0);
+	&:hover{
+		background: $light-green;
+	};
+}
+
+.white-middle-green{
+		color: $middle-green;
+		background: white;
+	  border: 1px solid $middle-green;
+		&:hover{
+			color: $light-green;
+			border: 1px solid $light-green;
+		};
+}
+
+.container{
+	background: white;
+}
+
+body{
+	background: #f1f4f9;
+	//background: $light-green-strong;
+	//background-image: url(trianglify-background.png);
+	//background: rgb(126, 215, 205);
+	//background-size: 100%;
+}
+
+#style-6::-webkit-scrollbar-thumb{
+	background-color: $light-green;
+}
+
+#grid-wrap-menu{
+	background: rgba(255, 255, 255, 0.5);
+	background: rgb(255, 255, 255);
+	padding: 30px;
+	padding-top: 0px;
+
+}
+/*.col-half2{
+	overflow: auto;
+	height: 500px;
+	overflow-y: auto !important; /* прокрутка по вертикали */
+/*}*/
+
+p, tr{
+	color: $text-color;
+}
+
+thead tr{
+	color: white;
+	color: $middle-green;
+	//font-size: 0.9em;
+}
+
+
+
+label{
+	color: $dark-blue;
+}
+
+h1, h2, h3, h4, h5, h6{
+	color: $dark-blue;
+}
+
+.link{
+	color: $light-green;
+}
+
+.footer{
+	background: $light-green;
+}
+
+.readonly{
+	background: $light-green;
+	color: white;
+}

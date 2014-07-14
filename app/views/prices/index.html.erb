@@ -1,0 +1,31 @@
+<h1>Listing prices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number months</th>
+      <th>Price</th>
+      <th>Terms</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @prices.each do |price| %>
+      <tr>
+        <td><%= price.number_months.round %></td>
+        <td><%= number_to_currency(price.price.round, :unit => "руб", :format => "%n %u", :precision => 0) %></td>
+        <td><%= price.terms %></td>
+        <td><%= link_to 'Show', price %></td>
+        <td><%= link_to 'Edit', edit_price_path(price) %></td>
+        <td><%= link_to 'Destroy', price, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Price', new_price_path, class: "button middle_green" %>

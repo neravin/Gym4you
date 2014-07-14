@@ -22,13 +22,15 @@
             <!--/strip_tags - убирает из описания html теги-->
             <dd><%= truncate(strip_tags(gymnasium.description), length: 400) %></dd>
           </dl>
+          <p><%= gymnasium.site %></p>
         </td>
-        <td><%= gymnasium.phone_overall %></td>
+        <td style="width: 150px;"><%= gymnasium.phone_overall %></td>
         <td>
           <%= link_to 'Show', gymnasium %><br/>
           <%= link_to 'Edit', edit_gymnasium_path(gymnasium) %><br/>
           <%= link_to 'Destroy', gymnasium, method: :delete, data: {    confirm: 'Are you sure?' } %>
         </td>
+        <td></td>
       </tr>
     <% end %>
   </tbody>

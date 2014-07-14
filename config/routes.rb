@@ -1,4 +1,8 @@
 GeoFitness::Application.routes.draw do
+  resources :services
+
+  resources :prices
+
   get "map/index"
   resources :affiliates
 

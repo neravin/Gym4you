@@ -1,0 +1,19 @@
+
+
+<p>
+  <strong>Number months:</strong>
+  <%= @price.number_months %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @price.price %>
+</p>
+
+<p>
+  <strong>Terms:</strong>
+  <%= @price.terms %>
+</p>
+
+<%= link_to 'Edit', edit_price_path(@price) %> |
+<%= link_to 'Back', prices_path %>
